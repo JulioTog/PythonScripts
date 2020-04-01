@@ -1,7 +1,6 @@
 from zipfile import ZipFile
 from tkinter import *
 from tkinter import ttk
-from tkinter.filedialog import askopenfilenames,askdirectory
 from os.path import basename
 
 print('\n')
@@ -22,15 +21,13 @@ print('\n')
 file_name = 'RM' + input('Ingrese Nro de RedMine: ')+'.zip'
 
 Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
-#root = "C:\Users\jtognetti\Desktop\Defectos"
-filename = askopenfilenames(title='Archivos a zipear')
-var = Tk().splitlist(filename)
 
+filename = filedialog.askopenfilenames(title='Archivos a zipear')
+var = Tk().splitlist(filename)
 #Selecciona destino del zipfile
-destino = askdirectory(title='Directorio destino del zip')
+destino = filedialog.askdirectory(title='Directorio destino del zip')
 #concatena path destino con el nombre del archivo a zipear
 destino = destino + '/' + file_name
-print(destino)
 #comprime todos los archivos seleccionados
 print('se comprime')
 with ZipFile(destino,'w') as zip:
